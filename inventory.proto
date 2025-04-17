@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option java_package = "com.example.protobuf";
+option go_package = "com/example/protobuf";
+
+package inventory;
+
+enum StockAction {
+  UNKNOWN = 0;
+  IN = 1;   // 입고
+  OUT = 2;  // 출고
+}
+
+message Product {
+  int32 id = 1;
+  string name = 2;
+  int32 quantity = 3;
+}
+
+message Warehouse {
+  int32 id = 1;
+  string name = 2;
+  string location = 3;
+}
+
+message InventoryLog {
+  int32 id = 1;
+  Product product = 2;
+  Warehouse warehouse = 3;
+  StockAction action = 4;
+  int32 quantity_changed = 5;
+  int64 timestamp = 6;
+}
